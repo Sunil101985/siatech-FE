@@ -6,12 +6,9 @@ import {
   Users,
   ShieldCheck,
   Zap,
-  CheckCircle2,
   ArrowRight,
   Sparkles,
-  HelpCircle,
-  FileCheck,
-  Clock
+  FileCheck
 } from "lucide-react";
 import styles from "./TalentCalculator.module.css";
 

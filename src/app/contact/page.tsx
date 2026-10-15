@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import ContactSection from "@/components/ContactSection";
-import { Sparkles, Shield, Clock, Award } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import styles from "./contact.module.css";
 
 export const metadata: Metadata = {

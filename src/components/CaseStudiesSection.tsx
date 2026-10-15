@@ -1,13 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import {
   TrendingUp,
-  Shield,
-  Zap,
-  Users,
-  Award,
-  ArrowRight,
   Star,
   Quote
 } from "lucide-react";

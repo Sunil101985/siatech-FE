@@ -7,9 +7,7 @@ import {
   Zap,
   Award,
   Globe,
-  Users,
-  ArrowRight,
-  CheckCircle2
+  ArrowRight
 } from "lucide-react";
 import styles from "./about.module.css";
 

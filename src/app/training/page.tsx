@@ -2,17 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   GraduationCap,
-  BookOpen,
   Award,
   Users,
-  CheckCircle2,
   ArrowRight,
   Terminal,
-  Cpu,
-  Layers,
   Sparkles,
-  ShieldCheck,
-  Calendar
+  ShieldCheck
 } from "lucide-react";
 import TrainingSpotlight from "@/components/TrainingSpotlight";
 import styles from "./training.module.css";

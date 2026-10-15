@@ -6,15 +6,11 @@ import {
   Users,
   ShieldCheck,
   Zap,
-  CheckCircle2,
   ArrowRight,
-  Star,
   MapPin,
   Clock,
   Briefcase,
-  Search,
-  Filter,
-  Sparkles
+  Search
 } from "lucide-react";
 import TalentCalculator from "@/components/TalentCalculator";
 import styles from "./hire.module.css";

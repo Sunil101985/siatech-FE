@@ -7,14 +7,11 @@ import {
   BookOpen,
   Calendar,
   CheckCircle,
-  Users,
-  Award,
   Download,
   ArrowRight,
   Terminal,
   Cpu,
-  Layers,
-  Sparkles
+  Layers
 } from "lucide-react";
 import styles from "./TrainingSpotlight.module.css";
 

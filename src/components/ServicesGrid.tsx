@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Layers,
@@ -10,8 +9,6 @@ import {
   Code2,
   CheckCircle2,
   ArrowRight,
-  Shield,
-  Zap,
   Clock,
   Sparkles
 } from "lucide-react";

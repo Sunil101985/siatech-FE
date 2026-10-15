@@ -7,9 +7,7 @@ import {
   Cloud,
   Brain,
   Smartphone,
-  Cpu,
-  Layers,
-  Sparkles
+  Cpu
 } from "lucide-react";
 import styles from "./TechStackSection.module.css";
 

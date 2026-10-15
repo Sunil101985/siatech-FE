@@ -64,8 +64,11 @@ export default function Navbar() {
 
   // Close menus on route change
   useEffect(() => {
-    setMobileMenuOpen(false);
-    setServicesDropdown(false);
+    const timer = setTimeout(() => {
+      setMobileMenuOpen(false);
+      setServicesDropdown(false);
+    }, 0);
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return (

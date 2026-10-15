@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Layers,
-  Users,
-  GraduationCap,
-  Code2,
   CheckCircle2,
   ArrowRight,
   Shield,
-  Zap,
-  Clock,
-  Sparkles,
-  HelpCircle,
-  FileCheck
+  Sparkles
 } from "lucide-react";
 import ServicesGrid from "@/components/ServicesGrid";
 import styles from "./services.module.css";

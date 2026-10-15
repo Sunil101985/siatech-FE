@@ -4,10 +4,8 @@ import { useState } from "react";
 import {
   Mail,
   Phone,
-  MapPin,
   Clock,
   CheckCircle,
-  Sparkles,
   Send,
   ShieldCheck,
   ChevronDown,
