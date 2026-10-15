@@ -1,11 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
-  turbopack: {
-    root: __dirname,
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
