@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SiaTech — Enterprise Technology Solutions & Talent Network
 
-## Getting Started
+![SiaTech Banner](public/images/hero-network.jpg)
 
-First, run the development server:
+**SiaTech** is a premier digital technology partner delivering high-impact IT consulting, elite tech freelancers, corporate workforce training, and bespoke software development to startups and enterprises worldwide.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Core Service Pillars
+
+1. **Strategic IT & Cloud Consulting**
+   - Enterprise multi-cloud architecture (AWS, GCP, Azure)
+   - Generative AI & LLM integration readiness roadmaps
+   - Microservices deconstruction, DevOps automation & GitOps
+   - Zero-trust security audits, ISO 27001 & SOC-2 compliance
+
+2. **Freelancer Hire & Staff Augmentation**
+   - Top 3% globally vetted senior engineers, architects, and designers
+   - Guaranteed candidate matching and sprint onboarding within 48 hours
+   - 1-Week risk-free trial with zero upfront obligation
+   - Flexible dedicated full-time, part-time, or autonomous squad models
+
+3. **Enterprise IT Solutions Training**
+   - Live, project-based bootcamps designed by industry practitioners
+   - Generative AI & Production RAG Systems Masterclass
+   - Enterprise Kubernetes & Cloud Infrastructure
+   - Modern Next.js 16, React 19 & Full-Stack Web Architecture
+   - Bespoke private corporate cohorts with custom company syllabi
+
+4. **Custom Software Development**
+   - End-to-end full-cycle SaaS platform engineering
+   - High-throughput web & mobile apps (Next.js, TypeScript, React Native)
+   - Real-time event-driven microservices & API ecosystems
+   - 100% intellectual property & code ownership transferred to client
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Framework**: [Next.js 16](https://nextjs.org) (App Router, Turbopack, Partial Prefetching)
+- **UI Library**: React 19 & TypeScript
+- **Styling**: Vanilla CSS Modules with custom Design System tokens (`globals.css`)
+- **Iconography**: Lucide React
+- **Typography**: Plus Jakarta Sans & JetBrains Mono
+
+---
+
+## 📁 Project Structure
+
+```
+siatech/
+├── public/
+│   └── images/              # High-resolution architectural & lab visuals
+├── src/
+│   ├── app/
+│   │   ├── about/           # About SiaTech: mission, values, global presence
+│   │   ├── contact/         # Consultation booking & SLA inquiry portal
+│   │   ├── hire-talent/     # Filterable talent directory & rate calculator
+│   │   ├── services/        # Deep dive into all 4 pillars & comparison matrix
+│   │   ├── training/        # IT training bootcamps & curriculum download
+│   │   ├── globals.css      # Design system variables, dark mode & animations
+│   │   ├── layout.tsx       # Root layout with responsive Navbar & Footer
+│   │   └── page.tsx         # Interactive Home page
+│   └── components/
+│       ├── Navbar.tsx       # Glassmorphic header with services mega-menu
+│       ├── Footer.tsx       # Enterprise footer with newsletter & credentials
+│       ├── HeroSection.tsx  # Dynamic hero banner with live statistics
+│       ├── ServicesGrid.tsx # Interactive 4-pillar showcase & tabs
+│       ├── TalentCalculator.tsx # Instant rate & team configuration widget
+│       ├── TrainingSpotlight.tsx # Curriculum tracks & syllabus request
+│       ├── TechStackSection.tsx  # Interactive stack category explorer
+│       ├── CaseStudiesSection.tsx# Measurable client outcomes & reviews
+│       └── ContactSection.tsx    # Multi-service quote & inquiry form
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-## Learn More
+### 2. Run the Development Server
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Production Build
+```bash
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License & Ownership
+&copy; 2026 SiaTech Solutions Inc. All rights reserved.
