@@ -7,7 +7,6 @@ import {
   ShieldCheck,
   Zap,
   Users,
-  Code,
   GraduationCap,
   Sparkles,
   CheckCircle2,
@@ -92,46 +91,25 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Hero Visual Card with Glassmorphic Badges */}
+        {/* Hero Visual Card with User's Hero Banner Image */}
         <div className={styles.visualContainer}>
           <div className={styles.imageCard}>
             <div className={styles.imageWrapper}>
               <Image
-                src="/images/team-banner.jpg"
-                alt="SiaTech Creative Web Design & Engineering Studio"
+                src="/images/hero-banner.png"
+                alt="Welcome to SiaTech Solutions - Creative Web Design Studio"
                 fill
                 priority
                 className={styles.heroImg}
                 sizes="(max-width: 1200px) 100vw, 1200px"
               />
-              <div className={styles.imageOverlay} />
 
-              {/* Cyan organic wave overlay matching reference image */}
-              <div className={styles.cyanSwoosh} />
-
-              {/* Content Overlay matching reference image */}
-              <div className={styles.bannerContent}>
-                <div className={styles.bannerEyebrow}>
-                  WELCOME TO SIATECH SOLUTIONS
-                </div>
-                <h2 className={styles.bannerHeading}>
-                  CREATIVE TECH &amp; SOFTWARE STUDIO
-                </h2>
-                <Link href="#services" className={styles.bannerBtn}>
-                  <span>DISCOVER MORE</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
-
-              {/* Carousel navigation indicators matching reference image */}
-              <div className={styles.bannerArrows}>
-                <button type="button" className={styles.arrowBtn} aria-label="Previous">
-                  &#8249;
-                </button>
-                <button type="button" className={styles.arrowBtn} aria-label="Next">
-                  &#8250;
-                </button>
-              </div>
+              {/* Interactive hotspot over the graphic's "DISCOVER MORE" button */}
+              <Link
+                href="/services"
+                className={styles.discoverHotspot}
+                aria-label="Discover More - SiaTech Solutions Services"
+              />
             </div>
 
             {/* Floating Card 1: Live Squad */}
@@ -158,18 +136,6 @@ export default function HeroSection() {
                 <div className={styles.floatingCardLabel}>Corporate IT Training</div>
                 <div className={styles.floatingCardVal}>GenAI &amp; Cloud Architecture</div>
                 <div className={styles.floatingSub}>240+ Enterprise Engineers Certified</div>
-              </div>
-            </div>
-
-            {/* Floating Card 3: Custom Dev */}
-            <div className={`${styles.floatingCard} ${styles.cardBottomLeft} glass-panel animate-float`} style={{ animationDelay: "1s" }}>
-              <div className={styles.floatingCardIcon} style={{ background: "rgba(16, 185, 129, 0.15)", color: "#10b981" }}>
-                <Code size={18} />
-              </div>
-              <div>
-                <div className={styles.floatingCardLabel}>Software Delivery</div>
-                <div className={styles.floatingCardVal}>Next.js, TypeScript &amp; AWS</div>
-                <div className={styles.floatingSub}>100% Test Coverage &amp; SOC-2 Ready</div>
               </div>
             </div>
           </div>

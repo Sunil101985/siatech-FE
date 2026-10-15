@@ -75,14 +75,14 @@ export default function Navbar() {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={`container ${styles.navContainer}`}>
         {/* Brand Logo */}
-        <Link href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo} aria-label="SiaTech Solutions">
           <div className={styles.logoIcon}>
             <Sparkles size={20} className={styles.logoSparkle} />
           </div>
           <span className={styles.logoText}>
             Sia<span className="text-gradient">Tech</span>
+            <span className={styles.logoSolutions}>Solutions</span>
           </span>
-          <span className={styles.logoBadge}>SOLUTIONS</span>
         </Link>
 
         {/* Desktop Navigation */}

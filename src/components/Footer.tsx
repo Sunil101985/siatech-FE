@@ -57,14 +57,14 @@ export default function Footer() {
         <div className={styles.mainGrid}>
           {/* Column 1: Brand Info */}
           <div className={styles.brandCol}>
-            <Link href="/" className={styles.logo}>
+            <Link href="/" className={styles.logo} aria-label="SiaTech Solutions">
               <div className={styles.logoIcon}>
                 <Sparkles size={20} />
               </div>
               <span className={styles.logoText}>
                 Sia<span className="text-gradient">Tech</span>
+                <span className={styles.logoSolutions}>Solutions</span>
               </span>
-              <span className={styles.logoBadge}>SOLUTIONS</span>
             </Link>
             <p className={styles.brandDesc}>
               SiaTech is a global technology powerhouse delivering high-impact IT consulting, elite tech freelancers, corporate IT training, and bespoke software engineering.
