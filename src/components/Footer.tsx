@@ -64,6 +64,7 @@ export default function Footer() {
               <span className={styles.logoText}>
                 Sia<span className="text-gradient">Tech</span>
               </span>
+              <span className={styles.logoBadge}>SOLUTIONS</span>
             </Link>
             <p className={styles.brandDesc}>
               SiaTech is a global technology powerhouse delivering high-impact IT consulting, elite tech freelancers, corporate IT training, and bespoke software engineering.

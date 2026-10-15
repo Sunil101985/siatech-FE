@@ -101,6 +101,18 @@
   color: #07090e;
 }
 
+.logoBadge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(0, 242, 254, 0.15);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  margin-left: 6px;
+}
+
 .brandDesc {
   color: var(--text-secondary);
   font-size: 0.92rem;

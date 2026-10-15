@@ -97,14 +97,41 @@ export default function HeroSection() {
           <div className={styles.imageCard}>
             <div className={styles.imageWrapper}>
               <Image
-                src="/images/hero-network.jpg"
-                alt="SiaTech High-Tech Enterprise Infrastructure"
+                src="/images/team-banner.jpg"
+                alt="SiaTech Creative Web Design & Engineering Studio"
                 fill
                 priority
                 className={styles.heroImg}
                 sizes="(max-width: 1200px) 100vw, 1200px"
               />
               <div className={styles.imageOverlay} />
+
+              {/* Cyan organic wave overlay matching reference image */}
+              <div className={styles.cyanSwoosh} />
+
+              {/* Content Overlay matching reference image */}
+              <div className={styles.bannerContent}>
+                <div className={styles.bannerEyebrow}>
+                  WELCOME TO SIATECH SOLUTIONS
+                </div>
+                <h2 className={styles.bannerHeading}>
+                  CREATIVE TECH &amp; SOFTWARE STUDIO
+                </h2>
+                <Link href="#services" className={styles.bannerBtn}>
+                  <span>DISCOVER MORE</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+
+              {/* Carousel navigation indicators matching reference image */}
+              <div className={styles.bannerArrows}>
+                <button type="button" className={styles.arrowBtn} aria-label="Previous">
+                  &#8249;
+                </button>
+                <button type="button" className={styles.arrowBtn} aria-label="Next">
+                  &#8250;
+                </button>
+              </div>
             </div>
 
             {/* Floating Card 1: Live Squad */}

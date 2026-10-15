@@ -9,8 +9,12 @@ import {
   Send,
   ShieldCheck,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  FileSpreadsheet,
+  Copy,
+  Sparkles
 } from "lucide-react";
+import { GOOGLE_FORM_CONFIG } from "@/config/forms";
 import styles from "./ContactSection.module.css";
 
 const faqs = [
@@ -33,6 +37,12 @@ const faqs = [
 ];
 
 export default function ContactSection() {
+  const [formMode, setFormMode] = useState<"web" | "google">("web");
+  const [googleUrl, setGoogleUrl] = useState(GOOGLE_FORM_CONFIG.embedUrl);
+  const [tempGoogleUrl, setTempGoogleUrl] = useState("");
+  const [showBlueprint, setShowBlueprint] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -49,11 +59,29 @@ export default function ContactSection() {
     setSubmitted(true);
   };
 
+  const handleSetGoogleUrl = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (tempGoogleUrl.trim()) {
+      let finalUrl = tempGoogleUrl.trim();
+      // Auto-append embedded=true if it's a standard viewform link
+      if (finalUrl.includes("docs.google.com/forms") && !finalUrl.includes("embedded=true")) {
+        finalUrl += (finalUrl.includes("?") ? "&" : "?") + "embedded=true";
+      }
+      setGoogleUrl(finalUrl);
+    }
+  };
+
+  const copyBlueprintText = (text: string, idx: number) => {
+    navigator.clipboard.writeText(text);
+    setCopiedIndex(idx);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
   return (
     <section id="contact" className={`section ${styles.contactSection}`}>
       <div className="container">
         {/* Header */}
-        <div className="text-center" style={{ marginBottom: 48 }}>
+        <div className="text-center" style={{ marginBottom: 40 }}>
           <div className="section-tag">
             <Mail size={14} />
             Let&apos;s Build Together
@@ -64,129 +92,254 @@ export default function ContactSection() {
           <p className="section-desc section-desc-center">
             Tell us about your requirements. An enterprise technical solutions architect will review your inquiry and respond within 4 business hours.
           </p>
+
+          {/* Form Mode Toggle */}
+          <div className={styles.modeToggleWrap}>
+            <button
+              type="button"
+              className={`${styles.toggleBtn} ${formMode === "web" ? styles.toggleBtnActive : ""}`}
+              onClick={() => setFormMode("web")}
+            >
+              <Send size={15} />
+              <span>Interactive Website Form</span>
+            </button>
+            <button
+              type="button"
+              className={`${styles.toggleBtn} ${formMode === "google" ? styles.toggleBtnActive : ""}`}
+              onClick={() => setFormMode("google")}
+            >
+              <FileSpreadsheet size={15} />
+              <span>Google Form Integration</span>
+            </button>
+          </div>
         </div>
 
         <div className={styles.grid}>
-          {/* Left: Contact Form */}
+          {/* Left: Contact Form or Google Form */}
           <div className={`glass-panel ${styles.formCard}`}>
-            {submitted ? (
-              <div className={styles.successState}>
-                <div className={styles.successIcon}>
-                  <CheckCircle size={48} color="#10b981" />
-                </div>
-                <h3 className={styles.successTitle}>Inquiry Received!</h3>
-                <p className={styles.successDesc}>
-                  Thank you, <strong>{formData.name}</strong>. A SiaTech solutions director has received your request regarding <strong>{formData.service}</strong> and will reach out to <strong>{formData.email}</strong> with next steps.
-                </p>
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={() => {
-                    setSubmitted(false);
-                    setFormData({
-                      name: "",
-                      email: "",
-                      company: "",
-                      service: "freelancers",
-                      budget: "$25k - $50k",
-                      message: ""
-                    });
-                  }}
-                >
-                  Submit Another Request
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className={styles.form}>
-                <div className={styles.formRow}>
-                  <div className="form-group" style={{ flex: 1 }}>
-                    <label className="form-label">Full Name *</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Alex Mercer"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="form-input"
-                    />
+            {formMode === "web" ? (
+              submitted ? (
+                <div className={styles.successState}>
+                  <div className={styles.successIcon}>
+                    <CheckCircle size={48} color="#10b981" />
                   </div>
-                  <div className="form-group" style={{ flex: 1 }}>
-                    <label className="form-label">Work Email *</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="alex@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="form-input"
-                    />
-                  </div>
-                </div>
-
-                <div className={styles.formRow}>
-                  <div className="form-group" style={{ flex: 1 }}>
-                    <label className="form-label">Company Name *</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Acme Corp"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="form-input"
-                    />
-                  </div>
-                  <div className="form-group" style={{ flex: 1 }}>
-                    <label className="form-label">Primary Service Needed *</label>
-                    <select
-                      className="form-select"
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    >
-                      <option value="consulting">IT &amp; Cloud Consulting</option>
-                      <option value="freelancers">Freelancer Hire / Staff Augmentation</option>
-                      <option value="training">Corporate IT Training</option>
-                      <option value="software-dev">Custom Software Development</option>
-                      <option value="all">Multiple Services / Not Sure</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Estimated Monthly Budget / Project Scope</label>
-                  <select
-                    className="form-select"
-                    value={formData.budget}
-                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                  <h3 className={styles.successTitle}>Inquiry Received!</h3>
+                  <p className={styles.successDesc}>
+                    Thank you, <strong>{formData.name}</strong>. A SiaTech solutions director has received your request regarding <strong>{formData.service}</strong> and will reach out to <strong>{formData.email}</strong> with next steps.
+                  </p>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({
+                        name: "",
+                        email: "",
+                        company: "",
+                        service: "freelancers",
+                        budget: "$25k - $50k",
+                        message: ""
+                      });
+                    }}
                   >
-                    <option value="< $15k">&lt; $15,000</option>
-                    <option value="$15k - $30k">$15,000 - $30,000</option>
-                    <option value="$30k - $60k">$30,000 - $60,000</option>
-                    <option value="$60k+">$60,000+ Enterprise Scope</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Project Details or Talent Requirements</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Describe your tech stack, timeline, team requirements, or business objectives..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="form-textarea"
-                  />
-                </div>
-
-                <div className={styles.formFooter}>
-                  <div className={styles.securityNote}>
-                    <ShieldCheck size={16} color="#00f2fe" />
-                    <span>Protected by strict NDA &amp; Enterprise Confidentiality</span>
-                  </div>
-                  <button type="submit" className="btn btn-primary btn-lg" style={{ width: "100%" }}>
-                    <span>Send Inquiry &amp; Request Strategy Call</span>
-                    <Send size={18} />
+                    Submit Another Request
                   </button>
                 </div>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} className={styles.form}>
+                  <div className={styles.formRow}>
+                    <div className="form-group" style={{ flex: 1 }}>
+                      <label className="form-label">Full Name *</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Alex Mercer"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="form-input"
+                      />
+                    </div>
+                    <div className="form-group" style={{ flex: 1 }}>
+                      <label className="form-label">Work Email *</label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="alex@company.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.formRow}>
+                    <div className="form-group" style={{ flex: 1 }}>
+                      <label className="form-label">Company Name *</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Acme Corp"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className="form-input"
+                      />
+                    </div>
+                    <div className="form-group" style={{ flex: 1 }}>
+                      <label className="form-label">Primary Service Needed *</label>
+                      <select
+                        className="form-select"
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      >
+                        <option value="consulting">IT &amp; Cloud Consulting</option>
+                        <option value="freelancers">Freelancer Hire / Staff Augmentation</option>
+                        <option value="training">Corporate IT Training</option>
+                        <option value="software-dev">Custom Software Development</option>
+                        <option value="all">Multiple Services / Not Sure</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Estimated Monthly Budget / Project Scope</label>
+                    <select
+                      className="form-select"
+                      value={formData.budget}
+                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                    >
+                      <option value="< $15k">&lt; $15,000</option>
+                      <option value="$15k - $30k">$15,000 - $30,000</option>
+                      <option value="$30k - $60k">$30,000 - $60,000</option>
+                      <option value="$60k+">$60,000+ Enterprise Scope</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Project Details or Talent Requirements</label>
+                    <textarea
+                      rows={4}
+                      placeholder="Describe your tech stack, timeline, team requirements, or business objectives..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="form-textarea"
+                    />
+                  </div>
+
+                  <div className={styles.formFooter}>
+                    <div className={styles.securityNote}>
+                      <ShieldCheck size={16} color="#00f2fe" />
+                      <span>Protected by strict NDA &amp; Enterprise Confidentiality</span>
+                    </div>
+                    <button type="submit" className="btn btn-primary btn-lg" style={{ width: "100%" }}>
+                      <span>Send Inquiry &amp; Request Strategy Call</span>
+                      <Send size={18} />
+                    </button>
+                  </div>
+                </form>
+              )
+            ) : (
+              /* Google Form Integration Mode */
+              <div className={styles.googleFormContainer}>
+                {googleUrl ? (
+                  <div className={styles.iframeWrapper}>
+                    <div className={styles.iframeBar}>
+                      <span className={styles.googleBadge}>
+                        <FileSpreadsheet size={14} /> Google Form Live
+                      </span>
+                      <button
+                        type="button"
+                        className={styles.changeLinkBtn}
+                        onClick={() => setGoogleUrl("")}
+                      >
+                        Change Google Form Link
+                      </button>
+                    </div>
+                    <iframe
+                      src={googleUrl}
+                      title="SiaTech Google Form"
+                      className={styles.googleIframe}
+                      frameBorder="0"
+                    >
+                      Loading Google Form…
+                    </iframe>
+                  </div>
+                ) : (
+                  <div className={styles.connectGoogleCard}>
+                    <div className={styles.googleIconCircle}>
+                      <FileSpreadsheet size={32} color="#00f2fe" />
+                    </div>
+                    <h3 className={styles.googleTitle}>Connect Your Google Form</h3>
+                    <p className={styles.googleDesc}>
+                      Paste the link or embed URL of your Google Form below to display it directly inside this section for your visitors.
+                    </p>
+
+                    <form onSubmit={handleSetGoogleUrl} className={styles.urlInputForm}>
+                      <input
+                        type="url"
+                        required
+                        placeholder="https://docs.google.com/forms/d/e/.../viewform?embedded=true"
+                        value={tempGoogleUrl}
+                        onChange={(e) => setTempGoogleUrl(e.target.value)}
+                        className={`form-input ${styles.urlInput}`}
+                      />
+                      <button type="submit" className="btn btn-primary">
+                        Embed Google Form
+                      </button>
+                    </form>
+
+                    <div className={styles.blueprintDivider} />
+
+                    <div className={styles.blueprintPrompt}>
+                      <div className={styles.blueprintText}>
+                        <strong>Need to create the Google Form?</strong> We prepared the exact questions, types, and options ready for you to copy.
+                      </div>
+                      <button
+                        type="button"
+                        className="btn btn-secondary btn-sm"
+                        onClick={() => setShowBlueprint(!showBlueprint)}
+                      >
+                        <Sparkles size={14} color="#00f2fe" />
+                        <span>{showBlueprint ? "Hide Blueprint" : "View Questions Blueprint"}</span>
+                      </button>
+                    </div>
+
+                    {showBlueprint && (
+                      <div className={styles.blueprintList}>
+                        <h4 className={styles.blueprintHeading}>
+                          Recommended Google Form Questions &amp; Types:
+                        </h4>
+                        {GOOGLE_FORM_CONFIG.fields.map((f, i) => (
+                          <div key={f.id} className={styles.blueprintItem}>
+                            <div className={styles.blueprintHeader}>
+                              <span className={styles.fieldIndex}>Q{i + 1}</span>
+                              <span className={styles.fieldLabel}>{f.label}</span>
+                              {f.required && <span className={styles.reqBadge}>Required</span>}
+                              <span className={styles.typeBadge}>{f.type}</span>
+                            </div>
+                            {f.options && (
+                              <div className={styles.optionsList}>
+                                {f.options.map((opt, oIdx) => (
+                                  <div key={oIdx} className={styles.optionBullet}>
+                                    • {opt}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                            <button
+                              type="button"
+                              className={styles.copyBtn}
+                              onClick={() => copyBlueprintText(f.label, i)}
+                            >
+                              <Copy size={12} />
+                              <span>{copiedIndex === i ? "Copied!" : "Copy Question"}</span>
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             )}
           </div>
 

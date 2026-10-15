@@ -102,7 +102,7 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 520px;
   border-radius: calc(var(--radius-lg) - 4px);
   overflow: hidden;
 }
@@ -114,7 +114,104 @@
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(7, 9, 14, 0.1) 0%, rgba(7, 9, 14, 0.75) 100%);
+  background: linear-gradient(90deg, rgba(7, 9, 14, 0.85) 0%, rgba(7, 9, 14, 0.4) 50%, rgba(7, 9, 14, 0.2) 100%);
+  z-index: 1;
+}
+
+.cyanSwoosh {
+  position: absolute;
+  top: 0;
+  right: -30px;
+  bottom: 0;
+  width: 260px;
+  background: #1b87a8;
+  clip-path: ellipse(80% 68% at 95% 50%);
+  opacity: 0.88;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bannerContent {
+  position: absolute;
+  left: 48px;
+  bottom: 54px;
+  z-index: 3;
+  max-width: 540px;
+  text-align: left;
+}
+
+.bannerEyebrow {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.bannerHeading {
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.95);
+  text-transform: uppercase;
+}
+
+.bannerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1b87a8;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 11px 22px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.bannerBtn:hover {
+  background: #00f2fe;
+  color: #07090e;
+  transform: translateY(-2px);
+}
+
+.bannerArrows {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 4;
+}
+
+.arrowBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  border: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arrowBtn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.08);
 }
 
 /* Floating Cards */

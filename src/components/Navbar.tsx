@@ -82,7 +82,7 @@ export default function Navbar() {
           <span className={styles.logoText}>
             Sia<span className="text-gradient">Tech</span>
           </span>
-          <span className={styles.logoBadge}>PRO</span>
+          <span className={styles.logoBadge}>SOLUTIONS</span>
         </Link>
 
         {/* Desktop Navigation */}
